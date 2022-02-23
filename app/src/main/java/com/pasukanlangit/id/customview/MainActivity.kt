@@ -1,9 +1,9 @@
 package com.pasukanlangit.id.customview
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
+import android.view.Window
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.pasukanlangit.id.customview.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -12,28 +12,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportActionBar?.hide()
         setContentView(binding.root)
 
-        binding.myEditText.addTextChangedListener(object: TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                //do nothing
+        binding.finishButton.setOnClickListener {
+            binding.seatsView.seat?.let {
+                Toast.makeText(this, "Kursi Anda nomor ${it.name}.", Toast.LENGTH_SHORT).show()
+            } ?: run {
+                Toast.makeText(this, "Silakan pilih kursi terlebih dahulu.", Toast.LENGTH_SHORT).show()
             }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                setMyButtonEnable()
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                //do nothing
-            }
-
-        })
-
-        setMyButtonEnable()
-    }
-
-    private fun setMyButtonEnable() {
-        val result = binding.myEditText.text
-        binding.myButton.isEnabled = result != null && result.toString().isNotEmpty()
+        }
     }
 }

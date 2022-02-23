@@ -7,18 +7,16 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.pasukanlangit.id.customview.MyEditText
-        android:id="@+id/my_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="32dp"/>
-    <com.pasukanlangit.id.customview.MyButton
-        android:id="@+id/my_button"
-        android:enabled="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"/>
+    <com.pasukanlangit.id.customview.SeatsView
+        android:id="@+id/seatsView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
+    <Button
+        android:id="@+id/finishButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selesai"
+        android:layout_gravity="center"/>
 </LinearLayout>
