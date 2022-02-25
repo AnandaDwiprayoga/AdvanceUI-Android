@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CustomView</string>
-    <string name="selesai">selesai</string>
+    <string name="like">Suka</string>
+    <string name="dislike">Tidak Suka</string>
 </resources>
